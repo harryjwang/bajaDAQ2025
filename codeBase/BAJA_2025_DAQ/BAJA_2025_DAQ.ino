@@ -12,7 +12,6 @@ Serial monitor functions -> Should try to figure out how to do this with a digit
 - Restart: delete the file and remake it
 
 IF YOU WANT TO DELETE ALL FILES FROM STOPPED STATE -> Hard reset the esp board and then send a "restart message"
-
 */
 
 // Libraries for MPU sensor to let us get acceleration, gyroscope, temp data
