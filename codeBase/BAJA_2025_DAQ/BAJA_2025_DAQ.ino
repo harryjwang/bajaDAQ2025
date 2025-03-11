@@ -52,8 +52,10 @@ float heading = 0.0;
 
 // used for rpm related calculations
 int irReading;
-int counter;
-int rpm;
+volatile float counter;
+volatile float rpm;
+volatile float numHoles = 8;
+volatile float numRotations;
 
 /* ISR */
 
@@ -110,13 +112,15 @@ void MPUSleep() {
 }
 
 void calculateAndPrintRpm() {
-  rpm = counter * 60;
+  numRotations = counter / numHoles;
+  rpm = numRotations * 60;
   Serial.print("RPM: ");
   Serial.println(rpm);
 }
 
 void calculateAndSaveRpm() {
-  rpm = counter * 60;
+  numRotations = counter / numHoles;
+  rpm = numRotations * 60;
   dataFile.println(rpm);
 }
 
