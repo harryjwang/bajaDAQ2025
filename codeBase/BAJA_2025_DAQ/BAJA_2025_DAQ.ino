@@ -52,10 +52,10 @@ float heading = 0.0;
 
 // used for rpm related calculations
 int irReading;
-volatile float counter;
-volatile float rpm;
-volatile float numHoles = 8;
-volatile float numRotations;
+int counter;
+int rpm;
+int numHoles = 8;
+int numRotations;
 
 /* ISR */
 
