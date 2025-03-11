@@ -81,7 +81,6 @@ void checkMessage() {
     acquiringData = false;
   }
 
-
   if (command == "restart"){
     Serial.println("Deleting + Remaking File");
     SD.remove(filename);
