@@ -1,7 +1,3 @@
-#include <SD.h>
-#include <sd_defines.h>
-#include <sd_diskio.h>
-
 /*  KNOWN ISSUES:
 - If the serial monitor ever says "SD card initialization failed" then you must hard reset using pin
 - You can reset the board by sending "reset" to the monitor and "stop" will stop transmission of the code
@@ -14,6 +10,11 @@ Serial monitor functions -> Should try to figure out how to do this with a digit
 IF YOU WANT TO DELETE ALL FILES FROM STOPPED STATE -> Hard reset the esp board and then send a "restart message"
 
 */
+
+// SD Card related libraries that let us log data onto the sd card module
+#include <SD.h>
+#include <sd_defines.h>
+#include <sd_diskio.h>
 
 // Libraries for MPU sensor to let us get acceleration, gyroscope, temp data
 #include <Adafruit_MPU6050.h>
