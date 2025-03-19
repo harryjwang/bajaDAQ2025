@@ -8,7 +8,6 @@ Serial monitor functions -> Should try to figure out how to do this with a digit
 - Restart: delete the file and remake it
 
 IF YOU WANT TO DELETE ALL FILES FROM STOPPED STATE -> Hard reset the esp board and then send a "restart message"
-
 */
 
 // SD Card related libraries that let us log data onto the sd card module
@@ -55,6 +54,8 @@ float heading = 0.0;
 int irReading;
 int counter;
 int rpm;
+int numHoles = 8;
+int numRotations;
 
 /* ISR */
 
@@ -79,7 +80,6 @@ void checkMessage() {
     MPUSleep();
     acquiringData = false;
   }
-
 
   if (command == "restart"){
     Serial.println("Deleting + Remaking File");
@@ -111,13 +111,15 @@ void MPUSleep() {
 }
 
 void calculateAndPrintRpm() {
-  rpm = counter * 60;
+  numRotations = counter / numHoles;
+  rpm = numRotations * 60;
   Serial.print("RPM: ");
   Serial.println(rpm);
 }
 
 void calculateAndSaveRpm() {
-  rpm = counter * 60;
+  numRotations = counter / numHoles;
+  rpm = numRotations * 60;
   dataFile.println(rpm);
 }
 
